@@ -14,7 +14,7 @@
       </tr>
     </thead>
     <tbody>
-        <tr
+      <tr
         v-for="a in assets"
         :key="a.id"
         class="border-b border-gray-200 hover:bg-gray-100 hover:bg-orange-100"
@@ -32,20 +32,22 @@
           <b># {{ a.rank }}</b>
         </td>
         <td>
-              <router-link 
-              class="hover:underline text-green-600"
-              :to="{ name : 'coin-detail', params: {id: a.id}}">
-               {{ a.name.toUpperCase() }} -
-              </router-link>
-              <router-link 
-              class="ml-1 p-1 justify-center rounded-md bg-black text-white"
-              :to="{ name : 'coin-detail', params: {id: a.id}}">
-             {{ a.symbol }}
-              </router-link>
-                       <span class="ml-1 text-gray-500"></span>
-          </td>
+          <router-link
+            class="hover:underline text-green-600"
+            :to="{ name: 'coin-detail', params: { id: a.id } }"
+          >
+            {{ a.name.toUpperCase() }} -
+          </router-link>
+          <router-link
+            class="ml-1 p-1 justify-center rounded-md bg-black text-white"
+            :to="{ name: 'coin-detail', params: { id: a.id } }"
+          >
+            {{ a.symbol }}
+          </router-link>
+          <span class="ml-1 text-gray-500"></span>
+        </td>
         <td>{{ dollarFilter(a.priceUsd) }}</td>
-        <td>{{ dollarFilter(a.marketCapUsd ) }}</td>
+        <td>{{ dollarFilter(a.marketCapUsd) }}</td>
         <td
           :class="
             a.changePercent24Hr.includes('-')
@@ -62,7 +64,7 @@
 </template>
 
 <script>
-import { dollarFilter, percentFilter } from '@/filters'   
+import { dollarFilter, percentFilter } from "@/filters";
 export default {
   name: "PxAssetsTable",
 
@@ -75,8 +77,9 @@ export default {
 
   setup() {
     return {
-      dollarFilter,percentFilter
-      }
+      dollarFilter,
+      percentFilter
+    };
   }
 };
 </script>

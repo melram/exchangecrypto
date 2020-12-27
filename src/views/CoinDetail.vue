@@ -11,14 +11,13 @@
             class="w-20 h-20 mr-5"
           />
           <h1 class="text-5xl">
-        
-          {{ asset.name }}
-        
+            {{ asset.name }}
+
             <small class="sm:mr-2 text-gray-500">{{ asset.symbol }}</small>
           </h1>
         </div>
 
-     <div class="my-10 flex flex-col">
+        <div class="my-10 flex flex-col">
           <ul>
             <li class="flex justify-between">
               <b class="text-gray-600 mr-10 uppercase">Ranking</b>
@@ -42,7 +41,7 @@
             </li>
             <li class="flex justify-between">
               <b class="text-gray-600 mr-10 uppercase">Variación 24hs</b>
-              <span>{{ percentFilter(asset.changePercent24Hr)  }}</span>
+              <span>{{ percentFilter(asset.changePercent24Hr) }}</span>
             </li>
           </ul>
         </div>
@@ -50,7 +49,9 @@
         <div class="my-10 sm:mt-0 flex flex-col justify-center text-center">
           <button
             class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-          >Cambiar</button>
+          >
+            Cambiar
+          </button>
 
           <div class="flex flex-row my-5">
             <label class="w-full" for="convertValue">
@@ -70,58 +71,61 @@
 </template>
 
 <script>
-import api from '@/api'
-import { dollarFilter, percentFilter } from '@/filters'  
+import api from "@/api";
+import { dollarFilter, percentFilter } from "@/filters";
 export default {
-  name: 'CoinDetail',
+  name: "CoinDetail",
 
   data() {
     return {
       asset: {},
       history: []
-    }
+    };
   },
   setup() {
     return {
-      dollarFilter,percentFilter
-      }
+      dollarFilter,
+      percentFilter
+    };
   },
 
   computed: {
     min() {
       return Math.min(
         ...this.history.map(h => parseFloat(h.priceUsd).toFixed(2))
-      )
+      );
     },
 
     max() {
       return Math.max(
         ...this.history.map(h => parseFloat(h.priceUsd).toFixed(2))
-      )
+      );
     },
 
     avg() {
-         return this.history.reduce((a, b) => a + parseFloat(b.priceUsd), 0) / this.history.length
+      return (
+        this.history.reduce((a, b) => a + parseFloat(b.priceUsd), 0) /
+        this.history.length
+      );
     }
   },
 
   created() {
-    this.getCoin()
-   
+    this.getCoin();
   },
   methods: {
     getCoin() {
-      const id = this.$route.params.id
+      const id = this.$route.params.id;
 
       Promise.all([api.getAsset(id), api.getAssetHistory(id)]).then(
         ([asset, history]) => {
-          this.asset = asset
-          this.history = history
+          this.asset = asset;
+          this.history = history;
         }
-      )
+      );
     }
-  } 
-}
+  }
+};
 </script>
 
 <style scoped>
@@ -130,4 +134,3 @@ td {
   text-align: center;
 }
 </style>
-

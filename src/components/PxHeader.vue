@@ -4,19 +4,21 @@
       <nav class="flex items-center justify-between flex-wrap bg-green-400 p-6">
         <div class="flex items-center flex-shrink-0 text-white mr-6">
           <px-icon class="mr-2" />
-            <router-link 
-            class="font-semibold text-xl tracking-tight" 
-            :to="{name: 'Home'}"
-            >
-           <span> PlatziExchange</span>
-            </router-link>
+          <router-link
+            class="font-semibold text-xl tracking-tight"
+            :to="{ name: 'Home' }"
+          >
+            <span> PlatziExchange</span>
+          </router-link>
         </div>
-        <div class="hidden sm:block w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+        <div
+          class="hidden sm:block w-full block flex-grow lg:flex lg:items-center lg:w-auto"
+        >
           <div class="text-sm lg:flex-grow"></div>
         </div>
-     
-      <router-link to="/">Home</router-link> |
-      <router-link to="/About">About</router-link> 
+
+        <router-link to="/">Home</router-link> |
+        <router-link to="/About">About</router-link>
       </nav>
     </nav>
   </header>
